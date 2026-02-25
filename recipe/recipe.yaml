@@ -2,7 +2,7 @@ schema_version: 1
 
 context:
   name: magika
-  version: 1.0.1
+  version: "1.0.2"
 
 package:
   name: ${{ name|lower }}
@@ -10,10 +10,10 @@ package:
 
 source:
   url: https://pypi.org/packages/source/${{ name[0] }}/${{ name }}/magika-${{ version }}.tar.gz
-  sha256: 313f8cbfcdc9a7e55c24286273230a2732b89825e58a93de2b576531393b8398
+  sha256: 8ed912d8f14d044f43fdbd17d6bd2cbdd6e8b8246e89be49f6cd547053636677
 
 build:
-  number: 2
+  number: 0
   noarch: python
   script: ${{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
   python:
