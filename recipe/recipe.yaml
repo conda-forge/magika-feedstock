@@ -2,7 +2,7 @@ schema_version: 1
 
 context:
   name: magika
-  version: "1.0.2"
+  version: "1.0.3"
 
 package:
   name: ${{ name|lower }}
@@ -10,7 +10,7 @@ package:
 
 source:
   url: https://pypi.org/packages/source/${{ name[0] }}/${{ name }}/magika-${{ version }}.tar.gz
-  sha256: 8ed912d8f14d044f43fdbd17d6bd2cbdd6e8b8246e89be49f6cd547053636677
+  sha256: ad3216012f6dd337be34c23ae3dfab36f0623bc62fbfb329f9a1852c9ad40304
 
 build:
   number: 0
@@ -37,8 +37,11 @@ tests:
   - python:
       imports:
         - magika
-      pip_check: true
-      python_version: ${{ python_min }}.*
+      # Skip pip check due to upstream very strict pins for onnxruntime
+      pip_check: false
+      python_version:
+        - ${{ python_min }}.*
+        - "*"
   - requirements:
       run:
         - python ${{ python_min }}.*
