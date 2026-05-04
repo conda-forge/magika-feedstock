@@ -37,8 +37,11 @@ tests:
   - python:
       imports:
         - magika
-      pip_check: true
-      python_version: ${{ python_min }}.*
+      # Skip pip check due to upstream very strict pins for onnxruntime
+      pip_check: false
+      python_version:
+        - ${{ python_min }}.*
+        - "*"
   - requirements:
       run:
         - python ${{ python_min }}.*
